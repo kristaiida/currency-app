@@ -1,24 +1,29 @@
-import logo from './logo.svg';
 import './App.css';
+import { useState } from 'react';
 
 function App() {
+  const [eur, setEur] = useState(0);
+  const [gbd, setGbd] = useState(0);
+
+  function handleSubmit(e) {
+    e.prevent.Default();
+    const conversion = eur * 0.9;
+    setGbd(conversion);
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <form onSubmit={handleSubmit}>
+      <h3>Valuuttalaskuri</h3>
+      <div>
+        <label>EUR</label>
+        <input type="number" value={eur} onChange={e => setEur(e.target.value)} />
+      </div>
+      <div>
+        <label>GBD</label>
+        <output>{gbd}</output>
+      </div>
+      <button>Laske</button>
+    </form>
   );
 }
 
