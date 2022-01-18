@@ -6,7 +6,7 @@ function App() {
   const [gbd, setGbd] = useState(0);
 
   function handleSubmit(e) {
-    e.prevent.Default();
+    e.preventDefault();
     const conversion = eur * 0.9;
     setGbd(conversion);
   }
